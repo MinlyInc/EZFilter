@@ -49,8 +49,8 @@ public class VideoFilterActivity extends BaseActivity {
         mPreviewImage = $(R.id.preview_image);
         mRecordButton = $(R.id.record);
 
-        uri1 = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.test3);
-        uri2 = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.test2);
+        uri1 = Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
+        uri2 = Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
 
         changeVideo();
 

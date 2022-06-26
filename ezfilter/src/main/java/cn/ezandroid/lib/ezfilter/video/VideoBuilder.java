@@ -135,30 +135,31 @@ public class VideoBuilder extends EZFilter.Builder {
 
     @Override
     public float getAspectRatio(IFitView view) {
-        MediaMetadataRetriever metadata = new MediaMetadataRetriever();
-        try {
-            String scheme = mVideo.getScheme();
-            if (scheme != null && (scheme.equals("http") || scheme.equals("https"))) {
-                // 在线视频
-                metadata.setDataSource(mVideo.toString(), new HashMap<>());
-            } else {
-                // 本地视频（SD卡或Assets目录）
-                metadata.setDataSource(view.getContext(), mVideo);
-            }
-            String width = metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH);
-            String height = metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT);
-            String rotation = metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION);
-            if ((NumberUtil.parseInt(rotation) / 90) % 2 != 0) {
-                return NumberUtil.parseInt(height) * 1.0f / NumberUtil.parseInt(width);
-            } else {
-                return NumberUtil.parseInt(width) * 1.0f / NumberUtil.parseInt(height);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 1;
-        } finally {
-            metadata.release();
-        }
+        return 1;
+//        MediaMetadataRetriever metadata = new MediaMetadataRetriever();
+//        try {
+//            String scheme = mVideo.getScheme();
+//            if (scheme != null && (scheme.equals("http") || scheme.equals("https"))) {
+//                // 在线视频
+//                metadata.setDataSource(mVideo.toString(), new HashMap<>());
+//            } else {
+//                // 本地视频（SD卡或Assets目录）
+//                metadata.setDataSource(view.getContext(), mVideo);
+//            }
+//            String width = metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH);
+//            String height = metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT);
+//            String rotation = metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION);
+//            if ((NumberUtil.parseInt(rotation) / 90) % 2 != 0) {
+//                return NumberUtil.parseInt(height) * 1.0f / NumberUtil.parseInt(width);
+//            } else {
+//                return NumberUtil.parseInt(width) * 1.0f / NumberUtil.parseInt(height);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return 1;
+//        } finally {
+//            metadata.release();
+//        }
     }
 
     @Override

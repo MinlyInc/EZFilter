@@ -15,7 +15,7 @@
         android:id="@+id/video_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Video加滤镜" />
+        android:text="VideoFilterActivity " />
 
     <Button
         android:id="@+id/camera_filter"
