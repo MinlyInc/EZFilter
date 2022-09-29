@@ -3,6 +3,10 @@ package cn.ezandroid.lib.ezfilter.video;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -92,6 +96,26 @@ public class VideoBuilder extends EZFilter.Builder {
         mErrorListener = listener;
         return this;
     }
+
+    public VideoBuilder setLifeCycleOwner(LifecycleOwner lifecycleOwner) {
+        lifecycleOwner.getLifecycle().addObserver(new DefaultLifecycleObserver() {
+
+            @Override
+            public void onResume(@NonNull LifecycleOwner owner) {
+                mMediaPlayer.start();
+                DefaultLifecycleObserver.super.onResume(owner);
+            }
+
+            @Override
+            public void onPause(@NonNull LifecycleOwner owner) {
+                mMediaPlayer.start();
+                DefaultLifecycleObserver.super.onPause(owner);
+            }
+        });
+
+        return this;
+    }
+
 
     public void output(String output) {
         // 离屏渲染
