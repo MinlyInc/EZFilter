@@ -94,7 +94,7 @@ public class VideoFilterActivity extends BaseActivity {
             public void run() {
                 mRenderPipeline = EZFilter.input(mCurrentUri)
                         .setLoop(false)
-                        .addFilter(new BWRender(VideoFilterActivity.this))
+//                        .addFilter(new BWRender(VideoFilterActivity.this))
                         .enableRecord("/sdcard/recordVideo.mp4", true, false)
                         .setPreparedListener(var1 -> Log.e("VideoFilterActivity", "onPrepared"))
                         .setCompletionListener(var1 -> Log.e("VideoFilterActivity", "onCompletion"))

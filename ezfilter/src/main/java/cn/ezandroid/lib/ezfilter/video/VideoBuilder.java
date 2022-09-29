@@ -1,20 +1,19 @@
 package cn.ezandroid.lib.ezfilter.video;
 
-import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import cn.ezandroid.lib.ezfilter.EZFilter;
 import cn.ezandroid.lib.ezfilter.core.FBORender;
 import cn.ezandroid.lib.ezfilter.core.FilterRender;
 import cn.ezandroid.lib.ezfilter.core.environment.IFitView;
-import cn.ezandroid.lib.ezfilter.core.util.NumberUtil;
 import cn.ezandroid.lib.ezfilter.extra.IAdjustable;
 import cn.ezandroid.lib.ezfilter.video.offscreen.OffscreenVideo;
 import cn.ezandroid.lib.ezfilter.video.player.DefaultMediaPlayer;
@@ -94,25 +93,6 @@ public class VideoBuilder extends EZFilter.Builder {
 
     public VideoBuilder setErrorListener(IMediaPlayer.OnErrorListener listener) {
         mErrorListener = listener;
-        return this;
-    }
-
-    public VideoBuilder setLifeCycleOwner(LifecycleOwner lifecycleOwner) {
-        lifecycleOwner.getLifecycle().addObserver(new DefaultLifecycleObserver() {
-
-            @Override
-            public void onResume(@NonNull LifecycleOwner owner) {
-                mMediaPlayer.start();
-                DefaultLifecycleObserver.super.onResume(owner);
-            }
-
-            @Override
-            public void onPause(@NonNull LifecycleOwner owner) {
-                mMediaPlayer.start();
-                DefaultLifecycleObserver.super.onPause(owner);
-            }
-        });
-
         return this;
     }
 
